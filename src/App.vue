@@ -1,10 +1,8 @@
 <template>
   <div id="app">
-
     <LoadLayout v-if="isLoading">
       <BaseLoading/>
     </LoadLayout>
-
     <MainLayout v-else/>
 
   </div>
