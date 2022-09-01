@@ -10,4 +10,11 @@ import BootstrapVue from 'bootstrap-vue-3'
 import './plugins/fontAwesome'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-createApp(App).use(store).use(router).use(BootstrapVue).component('font-awesome-icon', FontAwesomeIcon).mount('#app')
+import { formatNumber } from '@/filters/numeral'
+
+const app = createApp(App)
+app.config.globalProperties.$filters = {
+  formatNumber
+}
+
+app.use(store).use(router).use(BootstrapVue).component('font-awesome-icon', FontAwesomeIcon).mount('#app')

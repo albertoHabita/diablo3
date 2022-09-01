@@ -1,20 +1,28 @@
 <template>
   <div class="grid-container">
     <div class="grid-item item-left">
-      <TopHeroes :heroes="topHeroes"/>
+      <TopHeroes v-if="hasHeroes" :heroes="topHeroes"/>
+
+      <HeroesList v-if="hasHeroesList" :heroes="heroesList"/>
     </div>
+
     <div class="grid-item item-right">
       <h1>Derecha</h1>
     </div>
+
   </div>
 </template>
 
 <script>
 import TopHeroes from './TopHeroes/IndexView'
+import HeroesList from './HeroesList/IndexView'
 
 export default {
   name: 'MainBlock',
-  components: { TopHeroes },
+  components: {
+    TopHeroes,
+    HeroesList
+  },
   props: {
     profileData: {
       type: Object,
@@ -22,13 +30,17 @@ export default {
     }
   },
   computed: {
-    // Comprobamos que hay héroes
     hasHeroes () {
       return this.profileData.heroes.length > 0
     },
-    // Devolvemos los 3 primeros
     topHeroes () {
       return this.profileData.heroes.slice(0, 3)
+    },
+    hasHeroesList () {
+      return this.profileData.heroes.length > 1
+    },
+    heroesList () {
+      return this.profileData.heroes
     }
   }
 }

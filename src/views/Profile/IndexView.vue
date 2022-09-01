@@ -1,7 +1,7 @@
 <template>
   <div>
     <BaseLoading v-if="isLoading"/>
-    <MainBlock v-else :profile-data="profileData"/>
+    <MainBlock v-if="profileData!=null" :profile-data="profileData"/>
   </div>
 </template>
 
